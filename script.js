@@ -1,6 +1,9 @@
 let estilo = true
 let botaoStop = document.querySelector('#stop')
 
+const openApiKey = process.env.OPEN_API_KEY;
+const azureApiKey = process.env.AZURE_API_KEY;
+
 function trocaTema() {
     if (estilo) {
         document.documentElement.style.setProperty('color-scheme', 'light')
@@ -49,10 +52,11 @@ const capturarFala = () => {
 
 const PerguntarAoJarvis = async (pergunta) => {
 
+
     let url = 'https://api.openai.com/v1/chat/completions';
     let header = {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer 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'
+        'Authorization': 'Bearer ' + apiKey
     }
 
     let body = {
@@ -90,7 +94,7 @@ const FalarComoJarvis = (texto) => {
     const requestOptions = {
         method: 'POST',
         headers: {
-            'Ocp-Apim-Subscription-Key': 'c5af130c59444ebf9b92dc8649135956',
+            'Ocp-Apim-Subscription-Key': azureApiKey,
             'Content-Type': 'application/ssml+xml',
             'X-Microsoft-OutputFormat': 'audio-16khz-128kbitrate-mono-mp3',
             'User-Agent': 'curl',
