@@ -1,0 +1,22 @@
+name: Atualizar variáveis
+on:
+    push:
+        branches:
+            - main
+
+jobs:
+    update-variabes:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout do código
+              uses: actions/checkout@v2
+
+            - name: Atualizar variáveis
+              run: |
+                echo 'export const openApiKey = "${{ secrets.OPEN_API_KEY }}";export const azureApiKey = "${{ secrets.AZURE_API_KEY }}";' > vars.js
+                git add vars.js
+                git commit -m "Atualização das variáveis"
+                git push
+              
+              env:
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

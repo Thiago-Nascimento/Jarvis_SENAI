@@ -1,9 +1,6 @@
 let estilo = true
 let botaoStop = document.querySelector('#stop')
 
-const openApiKey = process.env.OPEN_API_KEY;
-const azureApiKey = process.env.AZURE_API_KEY;
-
 function trocaTema() {
     if (estilo) {
         document.documentElement.style.setProperty('color-scheme', 'light')
